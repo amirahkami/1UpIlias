@@ -1,0 +1,44 @@
+services:
+  web:
+    platform: linux/arm64
+    build: 
+      context: .
+      platforms:
+        - linux/arm64
+    container_name: ilias
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+    volumes:
+      - ./conf:/workspace
+      - ./src:/var/www/ilias
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    restart: unless-stopped
+
+
+  mariadb:
+    image: mariadb:10.6.18
+    container_name: mariadb
+    env_file:
+      - .env
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=ilias
+    command:
+      - --innodb_buffer_pool_size=8G
+      - --character_set_server=utf8
+      - --collation_server=utf8mb3_general_ci
+    networks:
+      - internal
+    ports:
+      - "43306:3306"
+    restart: unless-stopped
+
+
+networks:
+  internal:
+    driver: bridge
