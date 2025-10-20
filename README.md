@@ -11,6 +11,7 @@ This Docker setup provides a local development environment for IILAS Learn Manag
 mkdir src
 touch .env
 cp example.env .env
+# note: see also ilias.json and adjust database name, user, password corresponding as well
 ```
 
 2. Clone ILIAS 10 into ./src

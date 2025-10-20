@@ -3,8 +3,6 @@
 .env.local
 .env.*.local
 
-# Docker
-.dockerignore
 
 # Logs
 logs/
@@ -78,13 +76,6 @@ typings/
 .cache
 .parcel-cache
 
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
 # Gatsby files
 .cache/
 public
@@ -118,13 +109,6 @@ vendor/
 composer.phar
 composer.lock
 
-# ILIAS specific
-/var/www/ilias/
-/var/www/files/
-/var/www/logs/
-/var/www/config/
-/var/www/.npm/
-
 # Database
 *.sql
 *.sqlite
@@ -138,10 +122,6 @@ composer.lock
 # IDE files
 *.sublime-project
 *.sublime-workspace
-
-# Local configuration files
-config.local.php
-ilias.local.json
 
 # Cache directories
 cache/

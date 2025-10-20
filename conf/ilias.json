@@ -6,7 +6,7 @@
     "host": "mariadb",
     "port": "3306",
     "user": "root",
-    "password": "T!me4C0ffee",
+    "password": "your_db_root_password",
     "database": "ilias",
     "create_database": true
   },
@@ -23,8 +23,8 @@
   },
   "systemfolder": {
     "contact": {
-      "firstname": "A",
-      "lastname": "A",
+      "firstname": "your_firstname",
+      "lastname": "your_lastname",
       "email": "someone@example.com"
     }
   },
