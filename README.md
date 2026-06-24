@@ -52,3 +52,27 @@ cd /var/www/ && chown -R www-data:www-data /var/www/files
 7. Change the password after first login.
 
 That's it! Your ILIAS instance is ready to use.
+
+## Keycloak Development Login
+
+This repo is intended to use the sibling `1UpKeyCloak` development realm.
+For the cross-repo overview, see `1UpKeyCloak/docs/local-apps.md`.
+
+Planned local OIDC values:
+
+```text
+Issuer: http://keycloak.test:58080/realms/university-dev
+Client ID: ilias
+Client secret: ilias-dev-secret
+Redirect base: http://localhost:8080
+Username claim: preferred_username
+Scopes: openid profile email roles
+```
+
+The Keycloak realm already has ILIAS role hints in:
+
+```text
+resource_access.ilias.roles
+```
+
+The ILIAS app-side OIDC setup is not wired in this repo yet.
