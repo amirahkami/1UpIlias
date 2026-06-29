@@ -99,7 +99,7 @@ RUN a2ensite 000-default.conf
 COPY conf/php.ini /etc/php/8.3/apache2/php.ini
 
 # Copy ilias.json
-COPY conf/ilias.json /var/www/config/ilias.json
+COPY conf/ilias.json.template /var/www/config/ilias.json
 
 # Start Apache
 CMD ["apache2ctl", "-D", "FOREGROUND"]

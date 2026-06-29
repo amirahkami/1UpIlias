@@ -114,6 +114,10 @@ composer.lock
 *.sqlite
 *.db
 
+# Local ILIAS runtime
+src/
+conf/ilias.json
+
 # Backup files
 *.bak
 *.backup
@@ -126,3 +130,4 @@ composer.lock
 # Cache directories
 cache/
 tmp/
+conf/ilias.json

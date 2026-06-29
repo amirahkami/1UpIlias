@@ -5,16 +5,16 @@ services:
       context: .
       platforms:
         - linux/arm64
-    container_name: ilias
     env_file:
       - .env
     depends_on:
       - mariadb
     volumes:
       - ./conf:/workspace
+      - ./conf/ilias.json:/var/www/config/ilias.json:ro
       - ./src:/var/www/ilias
     ports:
-      - "8080:80"
+      - "${ILIAS_PORT:-28084}:80"
     networks:
       - internal
     restart: unless-stopped
@@ -22,7 +22,6 @@ services:
 
   mariadb:
     image: mariadb:10.6.18
-    container_name: mariadb
     env_file:
       - .env
     environment:
@@ -35,7 +34,7 @@ services:
     networks:
       - internal
     ports:
-      - "43306:3306"
+      - "127.0.0.1:${MARIADB_PORT:-28306}:3306"
     restart: unless-stopped
 
 

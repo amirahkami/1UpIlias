@@ -1,0 +1,11 @@
+{
+  "common": {"client_id": "myilias"},
+  "database": {"host": "mariadb", "port": "3306", "user": "root", "password": "${MARIADB_ROOT_PASSWORD}", "database": "ilias", "create_database": true},
+  "filesystem": {"data_dir": "/var/www/files/ilias"},
+  "logging": {"enable": true, "path_to_logfile": "/var/www/logs/ilias.log", "errorlog_dir": "/var/www/logs/"},
+  "http": {"path": "http://localhost:${ILIAS_PORT}"},
+  "systemfolder": {"contact": {"firstname": "ILIAS", "lastname": "Admin", "email": "admin@unrealuni.edu"}},
+  "utilities": {"path_to_convert": "/usr/bin/convert"},
+  "mediaobject": {"path_to_ffmpeg": "/usr/bin/ffmpeg"},
+  "preview": {"path_to_ghostscript": "/usr/bin/gs"}
+}
