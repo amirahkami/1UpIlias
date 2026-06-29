@@ -9,10 +9,15 @@ services:
       - .env
     depends_on:
       - mariadb
+    extra_hosts:
+      - "1up-keycloak.localhost:${DOCKER_HOST_GATEWAY_IP:-host-gateway}"
     volumes:
       - ./conf:/workspace
       - ./conf/ilias.json:/var/www/config/ilias.json:ro
+      - ./scripts:/opt/1upilias/scripts:ro
       - ./src:/var/www/ilias
+      - ilias_files:/var/www/files
+      - ilias_logs:/var/www/logs
     ports:
       - "${ILIAS_PORT:-28084}:80"
     networks:
@@ -35,9 +40,16 @@ services:
       - internal
     ports:
       - "127.0.0.1:${MARIADB_PORT:-28306}:3306"
+    volumes:
+      - ilias_mariadb_data:/var/lib/mysql
     restart: unless-stopped
 
 
 networks:
   internal:
     driver: bridge
+
+volumes:
+  ilias_mariadb_data:
+  ilias_files:
+  ilias_logs:

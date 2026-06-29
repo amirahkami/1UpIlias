@@ -18,7 +18,7 @@ cp env.example .env
 ./scripts/bootstrap.sh
 ```
 
-The bootstrap script clones ILIAS into `./src`, generates `conf/ilias.json`, starts Docker Compose, waits for MariaDB, and runs the ILIAS installer.
+The bootstrap script clones ILIAS into `./src`, generates `conf/ilias.json`, starts Docker Compose, waits for MariaDB, runs the ILIAS installer, and configures OpenID Connect for `1UpKeyCloak`.
 
 Visit:
 
@@ -55,6 +55,14 @@ The Keycloak realm already has ILIAS role hints in:
 
 ```text
 resource_access.ilias.roles
+university_role
 ```
 
-The ILIAS app-side OIDC setup is not wired in this repo yet.
+ILIAS uses `university_role` for global role mapping:
+
+```text
+admin -> Administrator
+teacher -> Author
+student -> User
+guest -> Guest
+```
